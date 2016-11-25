@@ -61,14 +61,14 @@ public class Main3Activity extends AppCompatActivity {
         a1=bundle.getString("name");
 
         if(main3==1) {
-            // a1=bundle.getString("name");
+           
 
             listView.setAdapter(listAdapter);
         }else if(main3==2){
 
 
             listAdapter.insert(a1,0);
-            listAdapter.notifyDataSetChanged();
+            //listAdapter.notifyDataSetChanged();
 
             listView.setAdapter(listAdapter);
         }

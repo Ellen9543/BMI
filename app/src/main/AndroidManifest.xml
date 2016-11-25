@@ -22,6 +22,8 @@
 
         <activity android:name=".Main3Activity"
             android:launchMode="singleTask">
+
+
         </activity>
 
         <activity android:name=".Main4Activity"></activity>

@@ -3,6 +3,7 @@ package com.example.admin.myapplication;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,10 +13,11 @@ import java.util.ArrayList;
 
 
 public class Main3Activity extends AppCompatActivity {
-   // private ArrayList<String> arylistName;
+    // private ArrayList<String> arylistName;
     private ArrayList<String> arylistData;
     private ListView listView;
-   private ArrayAdapter<String> listAdapter;
+    private ArrayAdapter<String> listAdapter;
+
 
     Integer main3;
     String a1;
@@ -25,18 +27,19 @@ public class Main3Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
+
         Bundle bundle = this.getIntent().getExtras();
-        a1=bundle.getString("name");
+        a1 = bundle.getString("name");
         main3 = bundle.getInt("main3");
 
-          ArrayList<String> arylistData = new ArrayList<>();
+        ArrayList<String> arylistData = new ArrayList<>();
 
-            if (main3 == 2) {
-                arylistData.add(a1);
-            }
-                listAdapter = new ArrayAdapter<String>(Main3Activity.this, android.R.layout.simple_list_item_1, arylistData);
-                listView = (ListView) findViewById(R.id.list_view);
-                listView.setAdapter(listAdapter);
+        if (main3 == 2) {
+            arylistData.add(a1);
+        }
+        listAdapter = new ArrayAdapter<String>(Main3Activity.this, android.R.layout.simple_list_item_1, arylistData);
+        listView = (ListView) findViewById(R.id.list_view);
+        listView.setAdapter(listAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -49,6 +52,8 @@ public class Main3Activity extends AppCompatActivity {
         });
     }
 
+
+
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
@@ -58,16 +63,16 @@ public class Main3Activity extends AppCompatActivity {
         Bundle bundle = this.getIntent().getExtras();
 
         main3 = bundle.getInt("main3");
-        a1=bundle.getString("name");
+        a1 = bundle.getString("name");
 
-        if(main3==1) {
-           
+        if (main3 == 1) {
+
 
             listView.setAdapter(listAdapter);
-        }else if(main3==2){
+        } else if (main3 == 2) {
 
 
-            listAdapter.insert(a1,0);
+            listAdapter.insert(a1, 0);
             //listAdapter.notifyDataSetChanged();
 
             listView.setAdapter(listAdapter);
@@ -76,14 +81,33 @@ public class Main3Activity extends AppCompatActivity {
     }
 
 
-    public void onclick(View v){
+    @Override
+    public void onBackPressed() {
+
+        Intent backIntent = new Intent();
+        Bundle bundle1 = new Bundle();
+        bundle1.putString("name", "");
+        bundle1.putString("height", "");
+        bundle1.putString("weight", "");
+        backIntent.putExtras(bundle1);
+        backIntent.setClass(Main3Activity.this, MainActivity.class);
+        startActivity(backIntent);
+
+
+    }
+
+
+    public void onclick(View v) {
         Intent intent = new Intent();
         Bundle bundle1 = new Bundle();
-        bundle1.putString("name","");
-        bundle1.putString("height","");
-        bundle1.putString("weight","");
+        bundle1.putString("name", "");
+        bundle1.putString("height", "");
+        bundle1.putString("weight", "");
         intent.putExtras(bundle1);
         intent.setClass(Main3Activity.this, MainActivity.class);
         startActivity(intent);
     }
+
 }
+
+

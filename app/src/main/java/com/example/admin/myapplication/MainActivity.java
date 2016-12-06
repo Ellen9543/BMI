@@ -3,6 +3,7 @@ package com.example.admin.myapplication;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     public void onclick1(View v){
 
         if(name.getText().toString().matches("")||height.getText().toString().matches("")||weight.getText().toString().matches("")){
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
             it.putExtras(bundle1);
             startActivity(it);
+
         }
     }
 
@@ -72,8 +75,20 @@ public class MainActivity extends AppCompatActivity {
         bundle2.putString("name","");
         intent.putExtras(bundle2);
         startActivity(intent);
+
         }
+
+
+
+    @Override
+    public   void   onBackPressed() {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        startActivity(intent);
     }
+
+}
 
 
 

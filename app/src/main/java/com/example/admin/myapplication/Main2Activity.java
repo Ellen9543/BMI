@@ -3,6 +3,7 @@ package com.example.admin.myapplication;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
 import android.os.Handler;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 
 import android.support.v7.app.AppCompatActivity;
@@ -158,6 +159,7 @@ public class Main2Activity extends AppCompatActivity {
         intent.putExtras(bundle1);
         intent.setClass(Main2Activity.this, MainActivity.class);
         startActivity(intent);
+
     }
     //加入追蹤，ListView
     public void onclick2(View v){
@@ -171,7 +173,32 @@ public class Main2Activity extends AppCompatActivity {
         bundle.putInt("main3",2);
         intent.putExtras(bundle);
         startActivity(intent);
+
     }
+
+    @Override
+    public void onBackPressed() {
+
+       // back();
+
+        Intent backIntent = new Intent();
+        Bundle bundle1 = new Bundle();
+        bundle1.putString("name", "");
+        bundle1.putString("height", "");
+        bundle1.putString("weight", "");
+        backIntent.putExtras(bundle1);
+        backIntent.setClass(Main2Activity.this, MainActivity.class);
+        startActivity(backIntent);
+
+
+    }
+/*
+    public void back(){
+        Intent backIntent = new Intent();
+        backIntent.setClass(Main2Activity.this, MainActivity.class);
+        startActivity(backIntent);
+    }*/
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event){
